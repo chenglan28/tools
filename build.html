@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Tools</title>
+        <style>
+            body {
+                min-height: 300px;
+            }
+            input {
+                border: #08C 1px solid;
+                height: 20px;
+                border-radius: 2px;
+                font-size: 16px;
+                padding: 1%;
+                text-align: center;
+            }
+            button {
+                border: none;
+                box-shadow: 5px 5px 10px;
+                padding: 10px;
+                color: #444;
+                font-size: 13px;
+                border-radius: 2px;
+                background: white;
+                margin: 1%;
+            }
+            button:hover {
+                box-shadow: 2px 2px 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 style="color: white;background: #08C;padding: 1%;width: 98%;">Tools</h1>
+        <input type="text" placeholder="搜索" onblur="serach(this.value)" onkeydown="serach(this.value)" onchange="serach(this.value)" />
+        <h2>开发工具</h2>
+        <button onclick="location.href = 'server/Timestamp_conversion.html'">时间戳转换</button>
+        <button onclick="location.href = 'server/md5.html'">MD5加密</button>
+        <button onclick="location.href = 'server/time.html'">时间计算</button>
+        <script>
+            serach = (val) => {
+                if(val == ""){
+                    document.querySelectorAll("button").forEach(item => {
+                        item.style.display = "block";
+                    })
+                }
+                else {
+                    document.querySelectorAll("button").forEach(item => {
+                        if(item.innerHTML.search(val) == -1)item.style.display = "none";
+                        else item.style.display = "block";
+                    })
+                }
+            }
+        </script>
+    </body>
+</html>

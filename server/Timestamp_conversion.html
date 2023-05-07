@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Tools - 时间戳转换</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            body {
+                min-height: 300px;
+            }
+            input {
+                border: #08C 1px solid;
+                height: 20px;
+                border-radius: 2px;
+                font-size: 16px;
+                padding: 1%;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <p style="color: white;background: #08C;padding: 1%;font-size: 50px;">
+            <svg onclick="location.href = 'build.html'" title="返回主页" style="width: 50px;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M1012.772284 457.405591L534.61302 73.387427a31.958876 31.958876 0 0 0-9.147334-6.402827 31.847336 31.847336 0 0 0-8.875134-2.63399 32.235169 32.235169 0 0 0-6.124488-0.292665 31.865755 31.865755 0 0 0-21.079084 9.330506L9.862625 457.151811c-12.489452 12.489452-12.489452 32.737612 0 45.227064 12.489452 12.489452 32.737612 12.489452 45.227064 0l72.853262-58.303894v483.414965c0 17.662265 14.3181 31.980365 31.980365 31.980365H415.765215c8.831132 0 16.826224-3.579525 22.613021-9.367345a32.116465 32.116465 0 0 0 5.507434-7.369851 31.833009 31.833009 0 0 0 3.85991-15.244192V575.960731h127.921462v351.528192a31.836079 31.836079 0 0 0 4.63046 16.5837c5.608741 9.231245 15.759939 15.397688 27.349905 15.397688H863.49033c17.662265 0 31.980365-14.3181 31.980365-31.980365V444.748317l72.075549 57.885361c12.489452 12.489452 32.737612 12.489452 45.227064 0s12.488429-32.738635-0.001024-45.228087zM831.508941 895.509581H639.627772V543.980365c0-17.662265-14.3181-31.980365-31.980365-31.980365H415.765215c-17.662265 0-31.980365 14.3181-31.980365 31.980365v351.529216H191.902658V392.886135l320.057433-256.141728 319.54885 256.635985v502.129189z" fill="#ffffff"></path></svg>
+            Tools - 时间戳转换
+        </p>
+        <div style="width: 98%;padding: 1%">
+            <input type="number" placeholder="输入时间戳" id="timestamp" onblur="show(this.value * 1)" onkeydown="show(this.value * 1)" onchange="show(this.value * 1)" />
+            <p id="result"></p>
+            <script>
+                show = (date) => {
+                    date = new Date(date)
+                    document.getElementById("result").innerHTML = "";
+                    if(date.getTimezoneOffset() == 0)document.getElementById("result").innerHTML += "中时区 ";
+                    else if(date.getTimezoneOffset() > 0)document.getElementById("result").innerHTML += `西${date.getTimezoneOffset()/60}区 `;
+                    else if(date.getTimezoneOffset() < 0)document.getElementById("result").innerHTML += `东${-date.getTimezoneOffset()/60}区 `;
+                    document.getElementById("result").innerHTML += `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日 
+                    周${(date.getDay() == 0)?7:date.getDay()}
+                    ${date.getHours()}:
+                    ${date.getMinutes()}:
+                    ${date.getSeconds() + date.getMilliseconds() / 1000}`;
+                    document.getElementById("result").innerHTML += `<br/>${ date }`
+                }
+                show(document.getElementById("timestamp").value = new Date().getTime())
+            </script>
+            <!-- <h2>使用说明</h2>
+            <div></div> -->
+        </div>
+    </body>
+</html>
