@@ -37,17 +37,18 @@
         <button onclick="location.href = 'server/Timestamp_conversion.html'">时间戳转换</button>
         <button onclick="location.href = 'server/md5.html'">MD5加密</button>
         <button onclick="location.href = 'server/time.html'">时间计算</button>
+        <button onclick="location.href = 'server/test.html'">JavaScript调试</button>
         <script>
             serach = (val) => {
                 if(val == ""){
                     document.querySelectorAll("button").forEach(item => {
-                        item.style.display = "block";
+                        item.style.display = "unset";
                     })
                 }
                 else {
                     document.querySelectorAll("button").forEach(item => {
                         if(item.innerHTML.search(val) == -1)item.style.display = "none";
-                        else item.style.display = "block";
+                        else item.style.display = "unset";
                     })
                 }
             }
